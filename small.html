@@ -30,6 +30,43 @@
     <link rel="stylesheet" href="css/magnific-popup.css" />
     <link rel="stylesheet" href="css/main.css" />
   </head>
+  <script>
+    // Tangkap elemen input pencarian
+    var searchInput = document.getElementById('searchInput');
+
+    // Tambahkan event listener untuk meng-handle aksi pencarian saat tombol "Enter" ditekan
+    searchInput.addEventListener('keyup', function (event) {
+      // Periksa apakah tombol yang ditekan adalah tombol "Enter"
+      if (event.keyCode === 13) {
+        // Panggil fungsi pencarian saat tombol "Enter" ditekan
+        search();
+      }
+    });
+
+    // Fungsi pencarian
+    function search() {
+      // Dapatkan nilai dari input pencarian
+      var searchText = searchInput.value.toLowerCase();
+
+      // Dapatkan semua elemen dengan class "single-product"
+      var products = document.getElementsByClassName('single-product');
+
+      // Loop melalui setiap elemen "single-product"
+      for (var i = 0; i < products.length; i++) {
+        var product = products[i];
+        var productName = product.getElementsByTagName('h6')[0].innerText.toLowerCase();
+
+        // Periksa apakah nama produk cocok dengan kata kunci pencarian
+        if (productName.includes(searchText)) {
+          // Tampilkan produk jika cocok
+          product.style.display = 'block';
+        } else {
+          // Sembunyikan produk jika tidak cocok
+          product.style.display = 'none';
+        }
+      }
+    }
+  </script>
 
   <body id="category">
     <!-- Start Header Area -->
@@ -39,11 +76,7 @@
           <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <a class="navbar-brand logo_h" href="index.html"><img src="img/LoverAll/LoverAll.png" alt="" width="100" height="100" /></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
+
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
               <ul class="nav navbar-nav menu_nav ml-auto">
@@ -58,23 +91,9 @@
                 </li>
                 <li class="nav-item"><a class="nav-link" href="review.html">Review</a></li>
               </ul>
-              <ul class="nav navbar-nav navbar-right">
-                <li class="nav-item">
-                  <button class="search"><span class="lnr lnr-magnifier" id="search"></span></button>
-                </li>
-              </ul>
             </div>
           </div>
         </nav>
-      </div>
-      <div class="search_input" id="search_input_box">
-        <div class="container">
-          <form class="d-flex justify-content-between">
-            <input type="text" class="form-control" id="search_input" placeholder="Search Here" />
-            <button type="submit" class="btn"></button>
-            <span class="lnr lnr-cross" id="close_search" title="Close Search"></span>
-          </form>
-        </div>
       </div>
     </header>
     <!-- End Header Area -->
@@ -89,13 +108,13 @@
               <div class="row single-slide align-items-center d-flex">
                 <div class="col-lg-5 col-md-6">
                   <div class="banner-content">
-                    <h1>LoverAll <br />Bouquet!</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
+                    <h1>LoverAll Bouquet</h1>
+                    <h2>Your Love For All ❤</h2>
                   </div>
                 </div>
                 <div class="col-lg-7">
                   <div class="banner-img">
-                    <img class="img-fluid" src="img/LoverAll/andrew-small-EfhCUc_fjrU-unsplash.jpg" alt="" />
+                    <img class="img-fluid" src="img/LoverAll/Pink & Green Watercolor Thank You Wish Card (3).png" alt="" />
                   </div>
                 </div>
               </div>
@@ -114,11 +133,21 @@
     <div class="container">
       <div class="col-xl-9 col-lg-8 col-md-1 mx-auto">
         <!-- Start Best Seller -->
+        <!-- Start Filter Bar -->
+        <div class="filter-bar d-flex flex-wrap align-items-center">
+          <div class="sorting">
+            <form action="">
+              <input class="form" type="text" id="searchInput" name="search" placeholder="Cari Bouquet" />
+              <button class="click-btn btn btn-default"><i class="fa fa-search" aria-hidden="true"></i></button>
+            </form>
+          </div>
+        </div>
+        <!-- End Filter Bar -->
         <section class="lattest-product-area pb-40 category-list">
           <div class="row">
             <!-- single product -->
             <div class="col-lg-4 col-md-6">
-              <div class="single-product">
+              <div class="single-product" id="gbr1">
                 <img class="img-fluid" src="img/LoverAll/S1.JPG" alt="" />
                 <div class="product-details">
                   <h6>Bouquet Small 1</h6>
@@ -126,7 +155,7 @@
                     <h6>Rp 25.000</h6>
                   </div>
                   <div class="prd-bottom">
-                    <a href="https://api.whatsapp.com/send/?phone=6287874881600&text&type=phone_number&app_absent=0" class="social-info">
+                    <a href="https://api.whatsapp.com/send/?phone=6285799808922&text&type=phone_number&app_absent=0" class="social-info">
                       <span class="ti-bag"></span>
                       <p class="hover-text">Order</p>
                     </a>
@@ -136,7 +165,7 @@
             </div>
             <!-- single product -->
             <div class="col-lg-4 col-md-6">
-              <div class="single-product">
+              <div class="single-product" id="gbr2">
                 <img class="img-fluid" src="img/LoverAll/S2.JPG" alt="" />
                 <div class="product-details">
                   <h6>Bouquet Small 2</h6>
@@ -144,7 +173,7 @@
                     <h6>Rp 25.000</h6>
                   </div>
                   <div class="prd-bottom">
-                    <a href="https://api.whatsapp.com/send/?phone=6287874881600&text&type=phone_number&app_absent=0" class="social-info">
+                    <a href="https://api.whatsapp.com/send/?phone=6285799808922&text&type=phone_number&app_absent=0" class="social-info">
                       <span class="ti-bag"></span>
                       <p class="hover-text">Order</p>
                     </a>
@@ -154,7 +183,7 @@
             </div>
             <!-- single product -->
             <div class="col-lg-4 col-md-6">
-              <div class="single-product">
+              <div class="single-product" id="gbr3">
                 <img class="img-fluid" src="img/LoverAll/S3.JPG" alt="" />
                 <div class="product-details">
                   <h6>Bouquet Small 3</h6>
@@ -162,7 +191,7 @@
                     <h6>Rp 25.000</h6>
                   </div>
                   <div class="prd-bottom">
-                    <a href="https://api.whatsapp.com/send/?phone=6287874881600&text&type=phone_number&app_absent=0" class="social-info">
+                    <a href="https://api.whatsapp.com/send/?phone=6285799808922&text&type=phone_number&app_absent=0" class="social-info">
                       <span class="ti-bag"></span>
                       <p class="hover-text">Order</p>
                     </a>
@@ -172,7 +201,7 @@
             </div>
             <!-- single product -->
             <div class="col-lg-4 col-md-6">
-              <div class="single-product">
+              <div class="single-product" id="gbr4">
                 <img class="img-fluid" src="img/LoverAll/S4.JPG" alt="" />
                 <div class="product-details">
                   <h6>Bouquet Small 4</h6>
@@ -180,7 +209,7 @@
                     <h6>Rp 25.000</h6>
                   </div>
                   <div class="prd-bottom">
-                    <a href="https://api.whatsapp.com/send/?phone=6287874881600&text&type=phone_number&app_absent=0" class="social-info">
+                    <a href="https://api.whatsapp.com/send/?phone=6285799808922&text&type=phone_number&app_absent=0" class="social-info">
                       <span class="ti-bag"></span>
                       <p class="hover-text">Order</p>
                     </a>
@@ -190,7 +219,7 @@
             </div>
             <!-- single product -->
             <div class="col-lg-4 col-md-6">
-              <div class="single-product">
+              <div class="single-product" id="gbr5">
                 <img class="img-fluid" src="img/LoverAll/S5.JPG" alt="" />
                 <div class="product-details">
                   <h6>Bouquet Small 5</h6>
@@ -198,7 +227,7 @@
                     <h6>Rp 25.000</h6>
                   </div>
                   <div class="prd-bottom">
-                    <a href="https://api.whatsapp.com/send/?phone=6287874881600&text&type=phone_number&app_absent=0" class="social-info">
+                    <a href="https://api.whatsapp.com/send/?phone=6285799808922&text&type=phone_number&app_absent=0" class="social-info">
                       <span class="ti-bag"></span>
                       <p class="hover-text">Order</p>
                     </a>
@@ -208,7 +237,7 @@
             </div>
             <!-- single product -->
             <div class="col-lg-4 col-md-6">
-              <div class="single-product">
+              <div class="single-product" id="gbr6">
                 <img class="img-fluid" src="img/LoverAll/S6.JPG" alt="" />
                 <div class="product-details">
                   <h6>Bouquet Small 6</h6>
@@ -216,7 +245,7 @@
                     <h6>Rp 25.000</h6>
                   </div>
                   <div class="prd-bottom">
-                    <a href="https://api.whatsapp.com/send/?phone=6287874881600&text&type=phone_number&app_absent=0" class="social-info">
+                    <a href="https://api.whatsapp.com/send/?phone=6285799808922&text&type=phone_number&app_absent=0" class="social-info">
                       <span class="ti-bag"></span>
                       <p class="hover-text">Order</p>
                     </a>
@@ -226,7 +255,7 @@
             </div>
             <!-- single product -->
             <div class="col-lg-4 col-md-6">
-              <div class="single-product">
+              <div class="single-product" id="gbr7">
                 <img class="img-fluid" src="img/LoverAll/S7.jpg" alt="" />
                 <div class="product-details">
                   <h6>Bouquet Small 7</h6>
@@ -234,7 +263,7 @@
                     <h6>Rp 25.000</h6>
                   </div>
                   <div class="prd-bottom">
-                    <a href="https://api.whatsapp.com/send/?phone=6287874881600&text&type=phone_number&app_absent=0" class="social-info">
+                    <a href="https://api.whatsapp.com/send/?phone=6285799808922&text&type=phone_number&app_absent=0" class="social-info">
                       <span class="ti-bag"></span>
                       <p class="hover-text">Order</p>
                     </a>
@@ -244,7 +273,7 @@
             </div>
             <!-- single product -->
             <div class="col-lg-4 col-md-6">
-              <div class="single-product">
+              <div class="single-product" id="gbr8">
                 <img class="img-fluid" src="img/LoverAll/S8.JPG" alt="" />
                 <div class="product-details">
                   <h6>Bouquet Small 8</h6>
@@ -252,7 +281,7 @@
                     <h6>Rp 25.000</h6>
                   </div>
                   <div class="prd-bottom">
-                    <a href="https://api.whatsapp.com/send/?phone=6287874881600&text&type=phone_number&app_absent=0" class="social-info">
+                    <a href="https://api.whatsapp.com/send/?phone=6285799808922&text&type=phone_number&app_absent=0" class="social-info">
                       <span class="ti-bag"></span>
                       <p class="hover-text">Order</p>
                     </a>
@@ -262,7 +291,7 @@
             </div>
             <!-- single product -->
             <div class="col-lg-4 col-md-6">
-              <div class="single-product">
+              <div class="single-product" id="gbr9">
                 <img class="img-fluid" src="img/LoverAll/M1.JPG" alt="" />
                 <div class="product-details">
                   <h6>Bouquet Small 9</h6>
@@ -270,7 +299,7 @@
                     <h6>Rp 25.000</h6>
                   </div>
                   <div class="prd-bottom">
-                    <a href="https://api.whatsapp.com/send/?phone=6287874881600&text&type=phone_number&app_absent=0" class="social-info">
+                    <a href="https://api.whatsapp.com/send/?phone=6285799808922&text&type=phone_number&app_absent=0" class="social-info">
                       <span class="ti-bag"></span>
                       <p class="hover-text">Order</p>
                     </a>
@@ -284,64 +313,43 @@
       </div>
     </div>
     <!-- End Bouquet Area -->
-
     <!-- start footer Area -->
     <footer class="footer-area section_gap">
       <div class="container">
-        <div class="row">
-          <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="row mx-auto">
+          <div class="col-lg-3 col-md-6 col-sm-6 mx-auto">
             <div class="single-footer-widget">
-              <h6>About Us</h6>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore dolore magna aliqua.</p>
+              <h6>Location</h6>
+              <p>Jalan Raya Mayjen Sungkono, Dusun 2 Kecamatan Kalimanah, Purbalingga</p>
             </div>
           </div>
-          <div class="col-lg-4 col-md-6 col-sm-6">
+          <div class="col-lg-3 col-md-6 col-sm-6 mx-auto">
             <div class="single-footer-widget">
-              <h6>Newsletter</h6>
-              <p>Stay update with our latest</p>
-              <div class="" id="mc_embed_signup">
-                <form target="_blank" novalidate="true" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01" method="get" class="form-inline">
-                  <div class="d-flex flex-row">
-                    <input class="form-control" name="EMAIL" placeholder="Enter Email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Email '" required="" type="email" />
-
-                    <button class="click-btn btn btn-default"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></button>
-                    <div style="position: absolute; left: -5000px">
-                      <input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="" type="text" />
-                    </div>
-
-                    <!-- <div class="col-lg-4 col-md-4">
-													<button class="bb-btn btn"><span class="lnr lnr-arrow-right"></span></button>
-												</div>  -->
-                  </div>
-                  <div class="info"></div>
-                </form>
-              </div>
+              <h6>Accepted Payment</h6>
+              <p>
+                BRI 662501031910539 <br />
+                BCA 3203792820 <br />
+                Cash
+              </p>
             </div>
           </div>
-          <div class="col-lg-3 col-md-6 col-sm-6">
-            <div class="single-footer-widget mail-chimp">
-              <h6 class="mb-20">Instragram Feed</h6>
-              <ul class="instafeed d-flex flex-wrap">
-                <li><img src="img/i1.jpg" alt="" /></li>
-                <li><img src="img/i2.jpg" alt="" /></li>
-                <li><img src="img/i3.jpg" alt="" /></li>
-                <li><img src="img/i4.jpg" alt="" /></li>
-                <li><img src="img/i5.jpg" alt="" /></li>
-                <li><img src="img/i6.jpg" alt="" /></li>
-                <li><img src="img/i7.jpg" alt="" /></li>
-                <li><img src="img/i8.jpg" alt="" /></li>
-              </ul>
+          <div class="col-lg-3 col-md-6 col-sm-6 mx-auto">
+            <div class="single-footer-widget">
+              <h6>Open Daily</h6>
+              <p>
+                Open All Day 08.00-19.00 <br />
+                Minimum Order H-1
+              </p>
             </div>
           </div>
-          <div class="col-lg-2 col-md-6 col-sm-6">
+          <div class="col-lg-3 col-md-6 col-sm-6 mx-auto">
             <div class="single-footer-widget">
               <h6>Follow Us</h6>
-              <p>Let us be social</p>
               <div class="footer-social d-flex align-items-center">
-                <a href="#"><i class="fa fa-facebook"></i></a>
-                <a href="#"><i class="fa fa-twitter"></i></a>
-                <a href="#"><i class="fa fa-dribbble"></i></a>
-                <a href="#"><i class="fa fa-behance"></i></a>
+                <p>
+                  <a href="https://www.instagram.com/loverall_bouquet/"><i class="fa fa-instagram"> loverall_bouquet</i></a> <br />
+                  <a href="https://api.whatsapp.com/send/?phone=6285799808922&text&type=phone_number&app_absent=0"><i class="fa fa-whatsapp"> +(62)85799808922</i></a>
+                </p>
               </div>
             </div>
           </div>
@@ -349,68 +357,6 @@
       </div>
     </footer>
     <!-- End footer Area -->
-
-    <!-- Modal Quick Product View -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="container relative">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-          <div class="product-quick-view">
-            <div class="row align-items-center">
-              <div class="col-lg-6">
-                <div class="quick-view-carousel">
-                  <div class="item" style="background: url(img/organic-food/q1.jpg)"></div>
-                  <div class="item" style="background: url(img/organic-food/q1.jpg)"></div>
-                  <div class="item" style="background: url(img/organic-food/q1.jpg)"></div>
-                </div>
-              </div>
-              <div class="col-lg-6">
-                <div class="quick-view-content">
-                  <div class="top">
-                    <h3 class="head">Mill Oil 1000W Heater, White</h3>
-                    <div class="price d-flex align-items-center"><span class="lnr lnr-tag"></span> <span class="ml-10">$149.99</span></div>
-                    <div class="category">Category: <span>Household</span></div>
-                    <div class="available">Availibility: <span>In Stock</span></div>
-                  </div>
-                  <div class="middle">
-                    <p class="content">
-                      Mill Oil is an innovative oil filled radiator with the most modern technology. If you are looking for something that can make your interior look awesome, and at the same time give you the pleasant warm feeling during
-                      the winter.
-                    </p>
-                    <a href="#" class="view-full">View full Details <span class="lnr lnr-arrow-right"></span></a>
-                  </div>
-                  <div class="bottom">
-                    <div class="color-picker d-flex align-items-center">
-                      Color:
-                      <span class="single-pick"></span>
-                      <span class="single-pick"></span>
-                      <span class="single-pick"></span>
-                      <span class="single-pick"></span>
-                      <span class="single-pick"></span>
-                    </div>
-                    <div class="quantity-container d-flex align-items-center mt-15">
-                      Quantity:
-                      <input type="text" class="quantity-amount ml-15" value="1" />
-                      <div class="arrow-btn d-inline-flex flex-column">
-                        <button class="increase arrow" type="button" title="Increase Quantity"><span class="lnr lnr-chevron-up"></span></button>
-                        <button class="decrease arrow" type="button" title="Decrease Quantity"><span class="lnr lnr-chevron-down"></span></button>
-                      </div>
-                    </div>
-                    <div class="d-flex mt-20">
-                      <a href="#" class="view-btn color-2"><span>Add to Cart</span></a>
-                      <a href="#" class="like-btn"><span class="lnr lnr-layers"></span></a>
-                      <a href="#" class="like-btn"><span class="lnr lnr-heart"></span></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
     <script src="js/vendor/jquery-2.2.4.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
